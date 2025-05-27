@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.SqlServer;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+//test Git inital commit
 
 builder.Services.AddControllers();
 
