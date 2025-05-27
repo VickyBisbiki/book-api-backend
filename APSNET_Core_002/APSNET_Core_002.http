@@ -1,0 +1,6 @@
+@APSNET_Core_002_HostAddress = http://localhost:5096
+
+GET {{APSNET_Core_002_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
