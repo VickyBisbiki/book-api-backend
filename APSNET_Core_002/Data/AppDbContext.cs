@@ -11,7 +11,7 @@ namespace APSNET_Core_002.Data
         }
         public DbSet<Book> Books { get; set; } = null!;
 
-        public DbSet<Customers> Customers { get; set; } = null!;
+        public DbSet<Customer> Customers { get; set; } = null!;
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Book>().HasData(
@@ -19,9 +19,9 @@ namespace APSNET_Core_002.Data
                 new Book { Id = 2, Title = "To Kill a Mockingbird", Author = "Harper Lee" }
             );
 
-            modelBuilder.Entity<Customers>().HasData(
-                new Customers { Id = 1, Name = "John Doe", Email = "sdad@gmail.com" },
-                new Customers { Id = 2, Name = "Jane Smith", Email = "rir@gmail.com" }
+            modelBuilder.Entity<Customer>().HasData(
+                new Customer { Id = 1, Name = "John Doe", Email = "sdad@gmail.com" },
+                new Customer { Id = 2, Name = "Jane Smith", Email = "rir@gmail.com" }
 
             );
         }
