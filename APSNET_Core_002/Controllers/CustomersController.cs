@@ -1,6 +1,8 @@
 ﻿using APSNET_Core_002.Data;
+using APSNET_Core_002.Interfaces;
 using APSNET_Core_002.Models;
 using APSNET_Core_002.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,8 +13,8 @@ namespace APSNET_Core_002.Controllers
     [ApiController]
     public class CustomersController : ControllerBase
     {
-        private readonly CustomerService _customerService;
-        public CustomersController(CustomerService customerService)
+        private readonly ICustomerService _customerService;
+        public CustomersController(ICustomerService customerService)
         {
             _customerService = customerService;
         }
@@ -87,6 +89,7 @@ namespace APSNET_Core_002.Controllers
 
             try
             {
+                exoistingCustomer = await _customerService.UpdateCustomerAsync(customer.Id, customer);  
                 return Ok(exoistingCustomer);
             }
             catch (Exception ex)
@@ -95,6 +98,7 @@ namespace APSNET_Core_002.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCustomer(int id)
         {
